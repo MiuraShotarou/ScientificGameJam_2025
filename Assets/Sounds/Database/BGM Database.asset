@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20225f4cbdc43f046a64fb20984a9ea5, type: 3}
   m_Name: BGM Database
   m_EditorClassIdentifier: 
-  bgmList: []
+  bgmList:
+  - bgmName: TitleSceneBGM
+    audioClip: {fileID: 8300000, guid: 9a819207e4cd90f4ba44ee7d1a7b84aa, type: 3}
+    volumeMultiplier: 1
+  - bgmName: GameSceneBGM
+    audioClip: {fileID: 8300000, guid: ef7f678061c0d1941a4680735a783d23, type: 3}
+    volumeMultiplier: 1
