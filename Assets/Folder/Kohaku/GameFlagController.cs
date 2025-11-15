@@ -19,7 +19,7 @@ public class GameFlagController : MonoBehaviour
         // ひとまずデバッグログで確認
         Debug.Log("Clear!");
 
-        // ★ここに後で演出とかシーン遷移とか追加できる★
+        // ここに後で演出とかシーン遷移とか追加できる
         // 例:
         // SceneManager.LoadScene("ResultScene");
         // クリアUI表示 など
