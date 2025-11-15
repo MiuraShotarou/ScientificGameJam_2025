@@ -69,21 +69,23 @@ public class TestControllerKohaku : MonoBehaviour
     {
         if (anim == null) return;
 
-        // 横移動しているかどうか（ちょっとでも入力あればtrue）
+        // 横移動しているかどうか（移動アニメ）
         bool isMoving = Mathf.Abs(inputX) > 0.01f;
-        anim.SetBool("Move", isMoving);   // ★ Move Boolに反映
+        anim.SetBool("Move", isMoving);
 
-        // ジャンプ中（空中にいる間はtrue）
+        // ジャンプ中かどうか（ジャンプアニメ）
         bool isJumping = !isGrounded;
-        anim.SetBool("Jamp", isJumping);  // ★ Jamp Boolに反映
+        anim.SetBool("Jamp", isJumping);
+
+        // ★★★ 左右反転処理 ★★★
+        if (inputX > 0.01f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (inputX < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
-    // シーン上で接地判定の円が見えるようにギズモ描画（確認用）
-    private void OnDrawGizmosSelected()
-    {
-        if (groundCheck == null) return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-    }
 }
