@@ -14,7 +14,7 @@ public class PlayerScriptTest : MonoBehaviour
     private bool canSwing = false;
     private bool isSwinging = false;
 
-    
+
 
     private int facing = 1;
 
@@ -39,13 +39,18 @@ public class PlayerScriptTest : MonoBehaviour
 
             rb.linearVelocity = new Vector2(climb_H, climb_V * speed);
 
+            UpdateMonkeyOffsets();
+
+
             return;
         }
-        if (isSwinging )
+        if (isSwinging)
         {
             float swing_H = Input.GetAxisRaw("Horizontal");
             float swing_V = Input.GetAxisRaw("Vertical");
             rb.linearVelocity = new Vector2(swing_H * speed, swing_V);
+
+            UpdateMonkeyOffsets();
             return;
         }
 
@@ -68,6 +73,7 @@ public class PlayerScriptTest : MonoBehaviour
         }
 
         UpdateMonkeyOffsets();
+
 
     }
 
@@ -143,7 +149,7 @@ public class PlayerScriptTest : MonoBehaviour
     {
         if (collision.CompareTag("Tree"))
         {
-            isClimbing = false;  
+            isClimbing = false;
             rb.gravityScale = 1f;
         }
         if (collision.CompareTag("Swing"))
@@ -173,6 +179,7 @@ public class PlayerScriptTest : MonoBehaviour
 
     void Climbing()
     {
+        Debug.Log("木登りモードに入りました");
         isClimbing = true;
         rb.gravityScale = 0f;  // 重力停止
         rb.linearVelocity = Vector2.zero;
@@ -204,13 +211,21 @@ public class PlayerScriptTest : MonoBehaviour
             FollowPlayerTest mk = monkeys[i];
             if (mk == null) continue;
 
-            float index = i + 2;
+            float index = i + 1.5f;
 
-            float offsetX = facing == 1
-            ? distance * index
-            : -distance * index;
+            if (isClimbing)
+            {
+                Debug.Log("木登り中");
+                mk.offset = new Vector3(0f, distance * index, 0f);
+            }
+            else
+            {
+                float offsetX = facing == 1
+                    ? distance * index
+                    : -distance * index;
 
-            mk.offset = new Vector3(offsetX, 0f, 0f);
+                mk.offset = new Vector3(offsetX, 0.2f, 0f);
+            }
         }
     }
 }
