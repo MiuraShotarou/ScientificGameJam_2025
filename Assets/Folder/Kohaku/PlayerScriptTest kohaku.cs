@@ -7,7 +7,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float distance;
 
-    // š Animator ‚Ì’Ç‰Á
+    // â˜… Animator ã®è¿½åŠ 
     [SerializeField] private Animator animator;
 
     private bool canJump = false;
@@ -39,7 +39,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
     void Update()
     {
         // ==========================
-        //  Climbing ’†
+        //  Climbing ä¸­
         // ==========================
         if (isClimbing)
         {
@@ -48,14 +48,14 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             rb.linearVelocity = new Vector2(climb_H, climb_V * speed);
 
-            // š Climb ’†‚Ì Move ”»’è
+            // â˜… Climb ä¸­ã® Move åˆ¤å®š
             if (animator != null)
             {
                 bool isMove = Mathf.Abs(climb_H) > 0.01f || Mathf.Abs(climb_V) > 0.01f;
                 animator.SetBool("Move", isMove);
             }
 
-            // š ¶‰E”½“]
+            // â˜… å·¦å³åè»¢
             if (climb_H > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else if (climb_H < 0)
@@ -65,7 +65,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         }
 
         // ==========================
-        //  Swinging ’†
+        //  Swinging ä¸­
         // ==========================
         if (isSwinging)
         {
@@ -79,7 +79,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
                 animator.SetBool("Move", isMove);
             }
 
-            // š ¶‰E”½“]
+            // â˜… å·¦å³åè»¢
             if (swing_H > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else if (swing_H < 0)
@@ -89,11 +89,11 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         }
 
         // ==========================
-        //  ’ÊíˆÚ“®
+        //  é€šå¸¸ç§»å‹•
         // ==========================
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        // š ¶‰E”½“]ˆ—
+        // â˜… å·¦å³åè»¢å‡¦ç†
         if (horizontal > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -110,13 +110,13 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
 
-        // š Move ƒAƒjƒ
+        // â˜… Move ã‚¢ãƒ‹ãƒ¡
         if (animator != null)
         {
             animator.SetBool("Move", Mathf.Abs(horizontal) > 0.01f);
         }
 
-        // ƒWƒƒƒ“ƒv
+        // ã‚¸ãƒ£ãƒ³ãƒ—
         if (canJump && !isJump)
         {
             JupmMove();
@@ -135,7 +135,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         {
             isJump = false;
 
-            // š ’…’n ¨ Jamp false
+            // â˜… ç€åœ° â†’ Jamp false
             if (animator != null)
             {
                 animator.SetBool("Jamp", false);
@@ -208,7 +208,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             isClimbing = false;
             rb.gravityScale = 1f;
 
-            // š Climb I—¹
+            // â˜… Climb çµ‚äº†
             if (animator != null)
             {
                 animator.SetBool("Climb", false);
@@ -235,7 +235,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJump = true;
 
-            // š Jamp = true
+            // â˜… Jamp = true
             if (animator != null)
             {
                 animator.SetBool("Jamp", true);
@@ -257,7 +257,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
 
-        // š “o‚è’†ƒtƒ‰ƒO
+        // â˜… ç™»ã‚Šä¸­ãƒ•ãƒ©ã‚°
         if (animator != null)
         {
             animator.SetBool("Climb", true);
