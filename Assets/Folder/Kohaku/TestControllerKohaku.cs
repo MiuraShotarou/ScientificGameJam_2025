@@ -1,0 +1,124 @@
+using UnityEngine;
+
+public class TestControllerKohaku : MonoBehaviour
+{
+    [Header("移動設定")]
+    public float moveSpeed = 5f;    // 横移動の速さ
+    public float jumpForce = 5f;    // ジャンプの強さ
+
+    [Header("接地判定")]
+    public Transform groundCheck;           // 足元のチェック位置
+    public float groundCheckRadius = 0.1f;  // 接地判定の円の半径
+    public LayerMask groundLayer;           // 地面のレイヤー
+
+    [Header("クリア判定")]
+    [Tooltip("ゴールオブジェクトに付けるTag名")]
+    public string clearTag = "Goal";        // ゴール用のタグ名
+    [Tooltip("ゲーム全体のフラグを管理するオブジェクト")]
+    public GameFlagController flagController; // ここにフラグ管理をアサイン
+
+    private Rigidbody2D rb;
+    private Animator anim;
+
+    private float inputX;
+    private bool isGrounded;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>(); // Animatorを取得
+    }
+
+    private void Update()
+    {
+        // キーボードの左右入力（A,D / ←,→）
+        inputX = Input.GetAxisRaw("Horizontal");
+
+        // スペースキーでジャンプ（接地しているときだけ）
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+
+        // アニメーション更新（移動／ジャンプ／左右反転）
+        UpdateAnimation();
+    }
+
+    private void FixedUpdate()
+    {
+        // 横移動（速度を直接書き換え）
+        rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
+
+        // 地面に足が付いているか判定
+        if (groundCheck != null)
+        {
+            isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer
+            );
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void Jump()
+    {
+        // 一旦縦の速度をリセットしてから上向きに力を加える
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void UpdateAnimation()
+    {
+        if (anim == null) return;
+
+        // 横移動しているかどうか（移動アニメ）
+        bool isMoving = Mathf.Abs(inputX) > 0.01f;
+        anim.SetBool("Move", isMoving);
+
+        // ジャンプ中かどうか（ジャンプアニメ）
+        bool isJumping = !isGrounded;
+        anim.SetBool("Jamp", isJumping);
+
+        // 左右反転処理
+        if (inputX > 0.01f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (inputX < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    // ★ ここからクリア判定 ★
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 触れた相手がゴール用のタグを持っているかチェック
+        if (collision.CompareTag(clearTag))
+        {
+            Debug.Log("Goalに触れたよ！");
+
+            if (flagController != null)
+            {
+                flagController.SetClearFlag(); // フラグを経由してクリア処理
+            }
+            else
+            {
+                Debug.LogWarning("flagController がアサインされていません！");
+            }
+        }
+    }
+
+    // シーン上で接地判定の円が見えるようにギズモ描画（確認用）
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+}
