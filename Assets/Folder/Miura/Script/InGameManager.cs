@@ -8,11 +8,14 @@ public class InGameManager : MonoBehaviour
     [SerializeField] float _limitTime;
     private float _timer = 0f;
 
-    float _timer = 0f;
-    
-    [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)] float _virusClearDuration;
-    [SerializeField] private Container _container;
-    [SerializeField] private GameObject _gameOverUI;
+    [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)]
+    float _virusClearDuration;
+
+    [SerializeField]
+    private Container _container;
+
+    [SerializeField]
+    private GameObject _gameOverUI;
 
     void Update()
     {
@@ -37,17 +40,32 @@ public class InGameManager : MonoBehaviour
         {
             Debug.LogWarning("GameOverUI に Animator がついてません！");
         }
+
         _container.gameObject.SetActive(true);
         _container.GameOverUI.GetComponent<Animator>().Play("ActiveGameOver");
     }
-    
+
     public void GameClear()
     {
+        // 子アイコンのフェードアウト
         foreach (var icon in _container.VirusEffectChildren)
         {
-            icon.GetComponent<Image>().DOFade(0, _virusClearDuration);
+            Image img = icon.GetComponent<Image>();
+            if (img != null)
+            {
+                img.DOFade(0f, _virusClearDuration);
+            }
         }
-        _container.VirusEffect.GetComponent<Image>().DOFade(0, _virusClearDuration)
-        .OnComplete(() => {_container.GameClearUI.GetComponent<Animator>().Play("GameClear");});
+
+        // メインエフェクトのフェードアウト
+        Image mainImg = _container.VirusEffect.GetComponent<Image>();
+        if (mainImg != null)
+        {
+            mainImg.DOFade(0f, _virusClearDuration)
+            .OnComplete(() =>
+            {
+                _container.GameClearUI.GetComponent<Animator>().Play("GameClear");
+            });
+        }
     }
 }
