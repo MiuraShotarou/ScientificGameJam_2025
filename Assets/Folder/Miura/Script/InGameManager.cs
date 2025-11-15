@@ -7,8 +7,6 @@ public class InGameManager : MonoBehaviour
     [Header("制限時間")]
     [SerializeField] float _limitTime;
     private float _timer = 0f;
-
-    float _timer = 0f;
     
     [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)] float _virusClearDuration;
     [SerializeField] private Container _container;
