@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6bfcef3466f17d648b7107601f45f709
+guid: 8aef1f51addbf5c49ae50fc5497969f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8793915729297761979
-    second: 03_0
+      213: -243380117678008717
+    second: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8_2025-11-15_184915-removebg-preview_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 03_0
+      name: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8_2025-11-15_184915-removebg-preview_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 89
-        height: 126
+        width: 268
+        height: 629
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb6638d73c34a0a70800000000000000
-      internalID: 8793915729297761979
+      spriteID: 376d86c82175f9cf0800000000000000
+      internalID: -243380117678008717
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      03_0: 8793915729297761979
+      "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8_2025-11-15_184915-removebg-preview_0": -243380117678008717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
