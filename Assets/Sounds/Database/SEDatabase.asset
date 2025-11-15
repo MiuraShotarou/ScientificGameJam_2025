@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81cccf839a955143b91a82ee8607f17, type: 3}
+  m_Name: SEDatabase
+  m_EditorClassIdentifier: 
+  seList:
+  - seName: DecideSE
+    audioClip: {fileID: 8300000, guid: 43a20c03c30330748888a7d85a002abc, type: 3}
+    volumeMultiplier: 1
+  - seName: CancelSE
+    audioClip: {fileID: 8300000, guid: 04afc6c12cf345d478b415d29b8784ec, type: 3}
+    volumeMultiplier: 1
+  - seName: StepOnSE
+    audioClip: {fileID: 8300000, guid: 0f4c038edc73759488c8a0206a87ce5f, type: 3}
+    volumeMultiplier: 1
+  - seName: JumpSE
+    audioClip: {fileID: 8300000, guid: a08ee417f7a67b4449435bbf45294cc9, type: 3}
+    volumeMultiplier: 1
+  - seName: DefeatSE
+    audioClip: {fileID: 8300000, guid: e462dae213853f44fbc351325e2b58ea, type: 3}
+    volumeMultiplier: 1
+  - seName: StartSE
+    audioClip: {fileID: 8300000, guid: 7459d4cb3e87d084d9ccce4e537925bc, type: 3}
+    volumeMultiplier: 1
