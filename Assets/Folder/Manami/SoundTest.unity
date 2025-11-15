@@ -292,10 +292,10 @@ MonoBehaviour:
   envAMG: {fileID: -5924703952589557952, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
   voiceAMG: {fileID: 475327820934199516, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
   effectAudioMixer: {fileID: 24100000, guid: 5a24d02f4c497374ea6a94844ce9da24, type: 2}
-  bgmDatabase: {fileID: 0}
-  seDatabase: {fileID: 0}
-  voiceDatabase: {fileID: 0}
-  environmentDatabase: {fileID: 0}
+  bgmDatabase: {fileID: 11400000, guid: 2127a4f6eb7d73047aed18da32b15a9a, type: 2}
+  seDatabase: {fileID: 11400000, guid: 2a9ec11ceb66868409004337f015ae50, type: 2}
+  voiceDatabase: {fileID: 11400000, guid: 3ee041e345cd1214a8cc915ed646e3d2, type: 2}
+  environmentDatabase: {fileID: 11400000, guid: 0ca22a7785aace444a82d73de48a0751, type: 2}
   fadeCurveType: 1
 --- !u!114 &810292844
 MonoBehaviour:

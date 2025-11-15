@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c55051e502554895da34b569e46bc, type: 3}
-  m_Name: EnvDatabase
-  m_EditorClassIdentifier: Assembly-CSharp:SoundSystem:EnvironmentDatabase
+  m_Script: {fileID: 11500000, guid: 080fc2eb5338411458bf1095689f90a0, type: 3}
+  m_Name: Env Database
+  m_EditorClassIdentifier: 
   envList: []
