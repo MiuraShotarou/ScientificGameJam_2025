@@ -6,6 +6,8 @@ public class InGameManager : MonoBehaviour
 {
     [Header("制限時間")]
     [SerializeField] float _limitTime;
+    private float _timer = 0f;
+
     float _timer = 0f;
     
     [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)] float _virusClearDuration;
@@ -24,6 +26,17 @@ public class InGameManager : MonoBehaviour
 
     void GameOver()
     {
+        _gameOverUI.SetActive(true);
+
+        Animator anim = _gameOverUI.GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.Play("ActiveGameOver");
+        }
+        else
+        {
+            Debug.LogWarning("GameOverUI に Animator がついてません！");
+        }
         _container.gameObject.SetActive(true);
         _container.GameOverUI.GetComponent<Animator>().Play("ActiveGameOver");
     }
