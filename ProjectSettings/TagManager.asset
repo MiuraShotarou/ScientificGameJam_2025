@@ -4,8 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Undefined
   - Monkey_1
   - Monkey_2
+  - Monkey
+  - Monkey_3
+  - Tree
+  - Swing
+  - Ground
   layers:
   - Default
   - TransparentFX
