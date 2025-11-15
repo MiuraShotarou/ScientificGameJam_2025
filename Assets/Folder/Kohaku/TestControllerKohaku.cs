@@ -41,7 +41,7 @@ public class TestControllerKohaku : MonoBehaviour
     private void FixedUpdate()
     {
         // 横移動（速度を直接書き換え）
-        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
 
         // 地面に足が付いているか判定
         if (groundCheck != null)
@@ -61,7 +61,7 @@ public class TestControllerKohaku : MonoBehaviour
     private void Jump()
     {
         // 一旦縦の速度をリセットしてから上向きに力を加える
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
