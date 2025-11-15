@@ -10,9 +10,12 @@ public class InGameManager : MonoBehaviour
     
     [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)] float _virusClearDuration;
     [SerializeField] private Container _container;
+    [SerializeField] private GameObject _gameOverUI;
+
     void Update()
     {
         _timer += Time.deltaTime;
+
         if (_timer > _limitTime)
         {
             GameOver();

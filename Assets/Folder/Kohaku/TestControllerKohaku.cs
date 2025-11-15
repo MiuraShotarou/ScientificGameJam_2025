@@ -11,6 +11,12 @@ public class TestControllerKohaku : MonoBehaviour
     public float groundCheckRadius = 0.1f;  // 接地判定の円の半径
     public LayerMask groundLayer;           // 地面のレイヤー
 
+    [Header("クリア判定")]
+    [Tooltip("ゴールオブジェクトに付けるTag名")]
+    public string clearTag = "Goal";        // ゴール用のタグ名
+    [Tooltip("ゲーム全体のフラグを管理するオブジェクト")]
+    public GameFlagController flagController; // ここにフラグ管理をアサイン
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -20,7 +26,7 @@ public class TestControllerKohaku : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>(); // ★ Animatorを取得
+        anim = GetComponent<Animator>(); // Animatorを取得
     }
 
     private void Update()
@@ -34,14 +40,14 @@ public class TestControllerKohaku : MonoBehaviour
             Jump();
         }
 
-        // アニメーション更新（移動入力に応じて）
+        // アニメーション更新（移動／ジャンプ／左右反転）
         UpdateAnimation();
     }
 
     private void FixedUpdate()
     {
         // 横移動（速度を直接書き換え）
-        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
 
         // 地面に足が付いているか判定
         if (groundCheck != null)
@@ -61,7 +67,7 @@ public class TestControllerKohaku : MonoBehaviour
     private void Jump()
     {
         // 一旦縦の速度をリセットしてから上向きに力を加える
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
@@ -77,7 +83,7 @@ public class TestControllerKohaku : MonoBehaviour
         bool isJumping = !isGrounded;
         anim.SetBool("Jamp", isJumping);
 
-        // ★★★ 左右反転処理 ★★★
+        // 左右反転処理
         if (inputX > 0.01f)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -88,4 +94,31 @@ public class TestControllerKohaku : MonoBehaviour
         }
     }
 
+    // ★ ここからクリア判定 ★
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 触れた相手がゴール用のタグを持っているかチェック
+        if (collision.CompareTag(clearTag))
+        {
+            Debug.Log("Goalに触れたよ！");
+
+            if (flagController != null)
+            {
+                flagController.SetClearFlag(); // フラグを経由してクリア処理
+            }
+            else
+            {
+                Debug.LogWarning("flagController がアサインされていません！");
+            }
+        }
+    }
+
+    // シーン上で接地判定の円が見えるようにギズモ描画（確認用）
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
 }
