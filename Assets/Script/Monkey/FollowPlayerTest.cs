@@ -4,8 +4,8 @@ public class FollowPlayerTest : MonoBehaviour
 {
     public Transform target;  // プレイヤー
     public float followSpeed = 5f;
-    public Vector3 offset = new Vector3(-1f, 0f, 0f);
-    
+    public Vector3 offset;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +18,8 @@ public class FollowPlayerTest : MonoBehaviour
         transform.position = Vector3.Lerp(
             transform.position,
             target.position + offset,
-            followSpeed * Time.deltaTime
+            followSpeed * Time.deltaTime   
         );
     }
+
 }
