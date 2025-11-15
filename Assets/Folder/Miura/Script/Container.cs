@@ -8,5 +8,6 @@ public class Container : MonoBehaviour
     [Header("UI")] 
     public GameObject GameClearUI;
     public GameObject GameOverUI;
+    public GameObject TimeLimitSlider;
     
 }
