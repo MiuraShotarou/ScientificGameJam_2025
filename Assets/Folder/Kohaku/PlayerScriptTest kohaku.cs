@@ -27,12 +27,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
-
+        animator = GetComponent<Animator>();
         Reset();
     }
 
@@ -49,17 +44,17 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             rb.linearVelocity = new Vector2(climb_H, climb_V * speed);
 
             // ★ Climb 中の Move 判定
-            if (animator != null)
-            {
-                bool isMove = Mathf.Abs(climb_H) > 0.01f || Mathf.Abs(climb_V) > 0.01f;
-                animator.SetBool("Move", isMove);
-            }
+            bool isMove = Mathf.Abs(climb_H) > 0.01f || Mathf.Abs(climb_V) > 0.01f;
+            animator.SetBool("Move", isMove);
+
 
             // ★ 左右反転
             if (climb_H > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else if (climb_H < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
+
+            UpdateMonkeyOffsets();
 
             return;
         }
@@ -73,17 +68,18 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             float swing_V = Input.GetAxisRaw("Vertical");
             rb.linearVelocity = new Vector2(swing_H * speed, swing_V);
 
-            if (animator != null)
-            {
-                bool isMove = Mathf.Abs(swing_H) > 0.01f || Mathf.Abs(swing_V) > 0.01f;
-                animator.SetBool("Move", isMove);
-            }
+
+            bool isMove = Mathf.Abs(swing_H) > 0.01f || Mathf.Abs(swing_V) > 0.01f;
+            animator.SetBool("Move", isMove);
+
 
             // ★ 左右反転
             if (swing_H > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else if (swing_H < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
+
+            UpdateMonkeyOffsets();
 
             return;
         }
@@ -208,12 +204,9 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             isClimbing = false;
             rb.gravityScale = 1f;
 
-            // ★ Climb 終了
-            if (animator != null)
-            {
-                animator.SetBool("Climb", false);
-                animator.SetBool("Move", false);
-            }
+            animator.SetBool("Climb", false);
+            animator.SetBool("Move", false);
+
         }
 
         if (collision.CompareTag("Swing"))
@@ -236,10 +229,9 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             isJump = true;
 
             // ★ Jamp = true
-            if (animator != null)
-            {
-                animator.SetBool("Jamp", true);
-            }
+
+            animator.SetBool("Jamp", true);
+
         }
     }
 
@@ -258,12 +250,11 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         // ★ 登り中フラグ
-        if (animator != null)
-        {
-            animator.SetBool("Climb", true);
-            animator.SetBool("Jamp", false);
-            animator.SetBool("Move", false);
-        }
+
+        animator.SetBool("Climb", true);
+        animator.SetBool("Jamp", false);
+        animator.SetBool("Move", false);
+
     }
 
     void Swinging()
@@ -272,11 +263,9 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
 
-        if (animator != null)
-        {
-            animator.SetBool("Jamp", false);
-            animator.SetBool("Move", false);
-        }
+        animator.SetBool("Jamp", false);
+        animator.SetBool("Move", false);
+
     }
 
     void Reset()
@@ -290,12 +279,11 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         canSwing = false;
         isSwinging = false;
 
-        if (animator != null)
-        {
-            animator.SetBool("Jamp", false);
-            animator.SetBool("Move", false);
-            animator.SetBool("Climb", false);
-        }
+
+        animator.SetBool("Jamp", false);
+        animator.SetBool("Move", false);
+        animator.SetBool("Climb", false);
+
     }
 
     void UpdateMonkeyOffsets()
@@ -305,13 +293,21 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             FollowPlayerTest mk = monkeys[i];
             if (mk == null) continue;
 
-            float index = i + 2;
+            float index = i + 1.5f;
 
-            float offsetX = facing == 1
-            ? distance * index
-            : -distance * index;
+            if (isClimbing)
+            {
+                Debug.Log("木登り中");
+                mk.offset = new Vector3(0f, distance * index, 0f);
+            }
+            else
+            {
+                float offsetX = facing == 1
+                    ? distance * index
+                    : -distance * index;
 
-            mk.offset = new Vector3(offsetX, 0f, 0f);
+                mk.offset = new Vector3(offsetX, 0.2f, 0f);
+            }
         }
     }
 }
