@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class InGameManager : MonoBehaviour
 {
     [Header("制限時間")]
     [SerializeField] float _limitTime;
-    private float _timer = 0f;
+    float _timer = 0f;
     
+    [SerializeField, Header("ウイルス浄化時間間隔"), Range(1, 3)] float _virusClearDuration;
     [SerializeField] private Container _container;
     void Update()
     {
@@ -19,7 +22,16 @@ public class InGameManager : MonoBehaviour
     void GameOver()
     {
         _container.gameObject.SetActive(true);
-        _container._gameOverUI.GetComponent<Animator>().Play("ActiveGameOver");
-        
+        _container.GameOverUI.GetComponent<Animator>().Play("ActiveGameOver");
+    }
+    
+    public void GameClear()
+    {
+        foreach (var icon in _container.VirusEffectChildren)
+        {
+            icon.GetComponent<Image>().DOFade(0, _virusClearDuration);
+        }
+        _container.VirusEffect.GetComponent<Image>().DOFade(0, _virusClearDuration)
+        .OnComplete(() => {_container.GameClearUI.GetComponent<Animator>().Play("GameClear");});
     }
 }
