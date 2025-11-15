@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BGM Database
   m_EditorClassIdentifier: 
   bgmList:
-  - bgmName: TitleSceneBGM
+  - bgmName: TitleBGM
     audioClip: {fileID: 8300000, guid: 9a819207e4cd90f4ba44ee7d1a7b84aa, type: 3}
     volumeMultiplier: 1
-  - bgmName: GameSceneBGM
+  - bgmName: GameBGM
     audioClip: {fileID: 8300000, guid: ef7f678061c0d1941a4680735a783d23, type: 3}
     volumeMultiplier: 1
