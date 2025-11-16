@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using SoundSystem;
 
 public class InGameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField, Range(1, 100)] float _limitTime;
     [Header("ウイルス減少量")]
     [SerializeField] float _reduceVirusValue;
-    
+
     float _virusActivePercentage = 0.7f; // 制限時間の何パーセントから色を濃くしていくのか
     float _virusClearDuration = 3; //ゲームクリア時のウイルス浄化時間間隔
     
