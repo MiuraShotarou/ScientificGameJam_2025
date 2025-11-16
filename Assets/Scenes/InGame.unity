@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: _container
       value: 
       objectReference: {fileID: 1743585399}
+    - target: {fileID: 2599880465431324147, guid: 51edbfef2d244bc489a0787f4446946d, type: 3}
+      propertyPath: _limitTime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599880465431324147, guid: 51edbfef2d244bc489a0787f4446946d, type: 3}
+      propertyPath: _reduceVirusValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4288623865649078293, guid: 51edbfef2d244bc489a0787f4446946d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -435,6 +443,10 @@ PrefabInstance:
     - target: {fileID: 1907198662828452052, guid: dd343803987a6084ebe13c1c8279ce2e, type: 3}
       propertyPath: m_Name
       value: (C)ResultPanels
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683566819911316272, guid: dd343803987a6084ebe13c1c8279ce2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5102399044358037815, guid: dd343803987a6084ebe13c1c8279ce2e, type: 3}
       propertyPath: m_Pivot.x

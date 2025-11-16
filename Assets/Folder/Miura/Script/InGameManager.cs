@@ -67,6 +67,7 @@ public class InGameManager : MonoBehaviour
     public void ReduceVirus()
     {
         _timer -= _reduceVirusValue;
+        Debug.Log("ReduceVirus");
     }
     /// <summary>
     /// Alphaだけを変更させる便利ツール

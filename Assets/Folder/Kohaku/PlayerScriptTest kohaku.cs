@@ -26,7 +26,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
     private List<FollowPlayerTest> monkeys = new List<FollowPlayerTest>();
     private List<FollowPlayerTest> Monkeys {get{return monkeys;}
-        set { monkeys = value; inGameManager.ReduceVirus();} 
+        set { monkeys = value;}
     } //代入されるとメソッド呼び出し
 
     void Start()
@@ -154,7 +154,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
-
+            inGameManager.ReduceVirus();
             Monkeys.Add(follow);
         }
 
@@ -169,7 +169,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
-
+            inGameManager.ReduceVirus();
             Monkeys.Add(follow);
         }
 
@@ -185,7 +185,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
-
+            inGameManager.ReduceVirus();
             Monkeys.Add(follow);
         }
     }
@@ -302,7 +302,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             if (isClimbing)
             {
-                Debug.Log("木登り中");
+                // Debug.Log("木登り中");
                 mk.offset = new Vector3(0f, distance * index, 0f);
             }
             else
