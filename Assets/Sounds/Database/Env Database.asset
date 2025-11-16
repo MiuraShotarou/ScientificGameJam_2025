@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080fc2eb5338411458bf1095689f90a0, type: 3}
   m_Name: Env Database
   m_EditorClassIdentifier: 
-  envList: []
+  envList:
+  - envName: Bird01SE
+    audioClip: {fileID: 8300000, guid: ea0efb4ad3ff569448a09213ee18482b, type: 3}
+    volumeMultiplier: 1
+  - envName: Bird02SE
+    audioClip: {fileID: 8300000, guid: f95ef9f6995023b42815265ae9770bad, type: 3}
+    volumeMultiplier: 1
+  - envName: Bird03SE
+    audioClip: {fileID: 8300000, guid: 9724281f57374804b8c148e03bdd1f4c, type: 3}
+    volumeMultiplier: 1
+  - envName: Bird04SE
+    audioClip: {fileID: 8300000, guid: b916e913a18977a40b57138edf545fe6, type: 3}
+    volumeMultiplier: 1

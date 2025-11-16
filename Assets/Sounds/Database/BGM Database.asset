@@ -14,11 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmList:
   - bgmName: TitleBGM
-    audioClip: {fileID: 8300000, guid: bf4ab2aeafd533144bf54749b33202fb, type: 3}
+    audioClip: {fileID: 8300000, guid: 9a819207e4cd90f4ba44ee7d1a7b84aa, type: 3}
     volumeMultiplier: 1
   - bgmName: GameBGM
-    audioClip: {fileID: 8300000, guid: 7e4b75d7b67499449b5a0ba9ffb9e5c5, type: 3}
+    audioClip: {fileID: 8300000, guid: ef7f678061c0d1941a4680735a783d23, type: 3}
     volumeMultiplier: 1
-  - bgmName: 
-    audioClip: {fileID: 0}
-    volumeMultiplier: 0

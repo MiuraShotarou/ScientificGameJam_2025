@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c074e27972b4e76468f96e10dbfdc466, type: 3}
   m_Name: SE Database
   m_EditorClassIdentifier: 
-  seList: []
+  seList:
+  - seName: PlayerWalkSE
+    audioClip: {fileID: 8300000, guid: c25d383619249964281b9c1daa569067, type: 3}
+    volumeMultiplier: 1
+  - seName: PlayerJumpSE
+    audioClip: {fileID: 8300000, guid: a852d719fae2c5d4d9423079426f566b, type: 3}
+    volumeMultiplier: 1
+  - seName: GameClearSE
+    audioClip: {fileID: 8300000, guid: 7c73e9c7907ba574596cef80ca065745, type: 3}
+    volumeMultiplier: 1
+  - seName: GameOverSE
+    audioClip: {fileID: 8300000, guid: e85bc25fed4f29d45abaf568aea56b73, type: 3}
+    volumeMultiplier: 1
+  - seName: PlayerSwimSE
+    audioClip: {fileID: 8300000, guid: ea97bb941c6fdd54d8fc7d9e1b2b0b7f, type: 3}
+    volumeMultiplier: 1
