@@ -12,6 +12,8 @@ TagManager:
   - Tree
   - Swing
   - Ground
+  - Goal
+  - DeadLine
   layers:
   - Default
   - TransparentFX
