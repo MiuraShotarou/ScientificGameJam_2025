@@ -27,7 +27,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
     private List<FollowPlayerTest> monkeys = new List<FollowPlayerTest>();
     private List<FollowPlayerTest> Monkeys {get{return monkeys;}
         set { monkeys = value; inGameManager.ReduceVirus();} 
-    }
+    } //代入されるとメソッド呼び出し
 
     void Start()
     {
