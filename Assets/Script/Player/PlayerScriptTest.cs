@@ -14,8 +14,6 @@ public class PlayerScriptTest : MonoBehaviour
     private bool canSwing = false;
     private bool isSwinging = false;
 
-
-
     private int facing = 1;
 
     private Rigidbody2D rb;
