@@ -53,3 +53,4 @@ MonoBehaviour:
   - {fileID: 0}
   GameClearUI: {fileID: 0}
   GameOverUI: {fileID: 0}
+  TimeLimitSlider: {fileID: 0}

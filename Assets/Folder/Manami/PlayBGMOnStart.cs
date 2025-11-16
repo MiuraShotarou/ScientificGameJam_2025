@@ -5,8 +5,7 @@ public class PlayBGMOnStart:
 MonoBehaviour
 {
     [SerializeField]
-    private string
-    bgmName = "GameBGM";
+    private string bgmName = "GameBGM";
 
     void Start()
     {
