@@ -7,7 +7,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private Container _container;
     [Header("制限時間")]
     [SerializeField, Range(1, 100)] float _limitTime;
-
+    [Header("ウイルス進行度減少量")] float _reduceVirusValue;
+    
     float _virusActivePercentage = 0.7f; // 制限時間の何パーセントから色を濃くしていくのか
     float _virusClearDuration = 3; //ゲームクリア時のウイルス浄化時間間隔
     
@@ -60,6 +61,11 @@ public class InGameManager : MonoBehaviour
         }
         _container.VirusEffect.GetComponent<Image>().DOFade(0, _virusClearDuration)
         .OnComplete(() => {_container.GameClearUI.GetComponent<Animator>().Play("GameClear");});
+    }
+
+    public void ReduceVirus()
+    {
+        _timer -= _reduceVirusValue;
     }
     /// <summary>
     /// Alphaだけを変更させる便利ツール
