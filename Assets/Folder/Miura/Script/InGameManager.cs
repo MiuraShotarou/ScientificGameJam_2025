@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -67,6 +67,10 @@ public class InGameManager : MonoBehaviour
     public void ReduceVirus()
     {
         _timer -= _reduceVirusValue;
+        if(_timer <= 0)
+        {
+            _timer = 0;
+        }
     }
     /// <summary>
     /// Alphaだけを変更させる便利ツール

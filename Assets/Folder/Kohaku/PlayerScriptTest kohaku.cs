@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerScriptTestkohaku : MonoBehaviour
 {
@@ -188,6 +189,11 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             inGameManager.ReduceVirus();
             Monkeys.Add(follow);
         }
+
+        if (collision.gameObject.CompareTag("DeadLine")) 
+        {
+            SceneManager.LoadScene("InGame");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -246,6 +252,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         {
             speed = 8f;
         }
+        speed = 5f;
     }
 
     void Climbing()
