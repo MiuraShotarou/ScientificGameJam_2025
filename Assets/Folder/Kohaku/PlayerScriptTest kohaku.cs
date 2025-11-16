@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PlayerScriptTestkohaku : MonoBehaviour
 {
+    [Header("InGameManager.cs")]
+    [SerializeField] InGameManager inGameManager;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float distance;
@@ -23,6 +25,9 @@ public class PlayerScriptTestkohaku : MonoBehaviour
     private Rigidbody2D rb;
 
     private List<FollowPlayerTest> monkeys = new List<FollowPlayerTest>();
+    private List<FollowPlayerTest> Monkeys {get{return monkeys;}
+        set { monkeys = value; inGameManager.ReduceVirus();} 
+    } //代入されるとメソッド呼び出し
 
     void Start()
     {
@@ -150,7 +155,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
 
-            monkeys.Add(follow);
+            Monkeys.Add(follow);
         }
 
         if (collision.gameObject.CompareTag("Monkey_2"))
@@ -165,7 +170,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
 
-            monkeys.Add(follow);
+            Monkeys.Add(follow);
         }
 
         if (collision.gameObject.CompareTag("Monkey_3"))
@@ -181,7 +186,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
             FollowPlayerTest follow = collision.collider.gameObject.AddComponent<FollowPlayerTest>();
             follow.target = this.transform;
 
-            monkeys.Add(follow);
+            Monkeys.Add(follow);
         }
     }
 
@@ -288,9 +293,9 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
     void UpdateMonkeyOffsets()
     {
-        for (int i = 0; i < monkeys.Count; i++)
+        for (int i = 0; i < Monkeys.Count; i++)
         {
-            FollowPlayerTest mk = monkeys[i];
+            FollowPlayerTest mk = Monkeys[i];
             if (mk == null) continue;
 
             float index = i + 1.5f;
