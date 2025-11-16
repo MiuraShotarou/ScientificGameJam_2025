@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5657212942057577634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2670170739890945567}
+  - component: {fileID: 6134379686981785432}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2670170739890945567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657212942057577634}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6134379686981785432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657212942057577634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7590a966b10ab448a7cc84688c7fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
+  bgmAMG: {fileID: 3492260494854384298, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
+  menuSeAMG: {fileID: 5259540369747621208, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
+  envAMG: {fileID: -5924703952589557952, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
+  voiceAMG: {fileID: 475327820934199516, guid: e14506b5ec5cbe04c83bc1d8e799285c, type: 2}
+  effectAudioMixer: {fileID: 24100000, guid: 5a24d02f4c497374ea6a94844ce9da24, type: 2}
+  bgmDatabase: {fileID: 11400000, guid: 2127a4f6eb7d73047aed18da32b15a9a, type: 2}
+  seDatabase: {fileID: 11400000, guid: 2a9ec11ceb66868409004337f015ae50, type: 2}
+  voiceDatabase: {fileID: 11400000, guid: 3ee041e345cd1214a8cc915ed646e3d2, type: 2}
+  environmentDatabase: {fileID: 11400000, guid: 0ca22a7785aace444a82d73de48a0751, type: 2}
+  fadeCurveType: 1
