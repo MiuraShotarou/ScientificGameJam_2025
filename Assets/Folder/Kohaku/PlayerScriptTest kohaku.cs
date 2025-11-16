@@ -75,7 +75,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
 
             bool isMove = Mathf.Abs(swing_H) > 0.01f || Mathf.Abs(swing_V) > 0.01f;
-            animator.SetBool("Move", isMove);
+            animator.SetBool("Swing", isMove);
 
 
             // ★ 左右反転
@@ -221,7 +221,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
             if (animator != null)
             {
-                animator.SetBool("Move", false);
+                animator.SetBool("Swing", false);
             }
         }
     }
@@ -258,7 +258,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
 
         animator.SetBool("Climb", true);
         animator.SetBool("Jamp", false);
-        animator.SetBool("Move", false);
+        animator.SetBool("Swing", false);
 
     }
 
@@ -269,7 +269,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         animator.SetBool("Jamp", false);
-        animator.SetBool("Move", false);
+        animator.SetBool("Swing", false);
 
     }
 
@@ -288,7 +288,7 @@ public class PlayerScriptTestkohaku : MonoBehaviour
         animator.SetBool("Jamp", false);
         animator.SetBool("Move", false);
         animator.SetBool("Climb", false);
-
+        animator.SetBool("Swing", false);
     }
 
     void UpdateMonkeyOffsets()
